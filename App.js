@@ -85,7 +85,7 @@ const StudentDashboard = () => {
           {/* Top Header */}
           <View style={styles.topHeader}>
           <Image source={logo} style={styles.logoImage} />
-            <View  style={{ marginLeft: -40, marginTop: 20}}>
+            <View  style={{ marginLeft: -40, marginTop: 15}}>
               <Text style={styles.greeting}>Ola, Giovanna!</Text>
               <Text style={styles.subtitle}>Veja suas atividades para hoje</Text>
             </View>
