@@ -19,7 +19,8 @@ const { width } = Dimensions.get('window');
 const StudentDashboard = () => {
   useFonts({
     Eurostile: require('./assets/fonts/EuroStyle Normal.ttf'),  
-  });
+    Montserrat: require('./assets/fonts/Montserrat-VariableFont_wght.ttf'),  
+  })
   
   const [performance, setPerformance] = useState(90);
   
@@ -77,7 +78,7 @@ const StudentDashboard = () => {
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* Header Section */}
         <LinearGradient
-          colors={['#6366f1', '#3b82f6', '#8b5cf6']}
+          colors={['#EEEEFF', '#EEEEFF', '#EEEEFF']}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
           style={styles.headerContainer}
@@ -85,12 +86,13 @@ const StudentDashboard = () => {
           {/* Top Header */}
           <View style={styles.topHeader}>
           <Image source={logo} style={styles.logoImage} />
-            <View  style={{ marginLeft: -40, marginTop: 15}}>
+            <View  style={{ marginLeft: -100, marginTop: 15}}>
               <Text style={styles.greeting}>Ola, Giovanna!</Text>
-              <Text style={styles.subtitle}>Veja suas atividades para hoje</Text>
+              <Text style={styles.subtitle}>Veja suas atividades</Text>
+              <Text style={styles.subtitle}>para hoje</Text>
             </View>
             <View style={styles.avatarContainer}>
-              <Ionicons name="person" size={24} color="white" />
+              <Ionicons name="person" size={13} color="white" />
             </View>
           </View>
 
@@ -110,8 +112,8 @@ const StudentDashboard = () => {
                   <Text style={styles.timeValue}>08:00 am</Text>
                 </View>
                 <View style={styles.timeBlock}>
-                  <Text style={styles.timeLabel}>SAÍDA</Text>
-                  <Text style={styles.timeValue}>Pendente</Text>
+                  <Text style={styles.timeLabel1}>SAÍDA</Text>
+                  <Text style={styles.timeValue1}>Pendente</Text>
                 </View>
               </View>
             </View>
@@ -122,8 +124,7 @@ const StudentDashboard = () => {
         <View style={styles.contentContainer}>
           <View style={styles.performanceCard}>
             <View style={styles.performanceHeader}>
-              <Text style={styles.performanceTitle}>Desempenho</Text>
-              <Text style={styles.performanceTitle}>Profissional em %</Text>
+              <Text style={styles.performanceTitle}>Desempenho Profissional em %</Text>
             </View>
             
             <View style={styles.circularProgressWrapper}>
@@ -197,27 +198,33 @@ const styles = StyleSheet.create({
     marginBottom: 32,
   },
   greeting: {
-    color: 'white',
+    color: 'black',
     fontSize: 20,
     fontWeight: '500',
     marginBottom: 4,
     fontFamily: "Eurostile",
-    letterSpacing: 1
+    letterSpacing: 1,
+    fontWeight: 100
   },
   subtitle: {
-    color: '#bfdbfe',
-    fontSize: 14,
+    color: '#black',
+    fontSize: 12,
+    letterSpacing: 1,
+    fontWeight: '300',
   },
   avatarContainer: {
     backgroundColor: '#4746D8',
     padding: 12,
     borderRadius: 50,
-    marginTop: 15
+    marginTop: 15,
+    borderWidth: 4,             // Define a largura da borda
+    borderColor: '#6E6DFF', 
   },
   scheduleCard: {
-    backgroundColor: 'rgba(255, 255, 255, 0.15)',
+    backgroundColor: 'rgba(68, 0, 255, 0.07)',
     borderRadius: 16,
     padding: 20,
+    
   },
   scheduleContent: {
     flexDirection: 'row',
@@ -225,9 +232,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   dayLabel: {
-    color: '#bfdbfe',
+    color: '#6E6DFF',
     fontSize: 12,
-    fontWeight: '500',
+    fontWeight: '700',
     letterSpacing: 1,
     marginBottom: 4,
   },
@@ -236,14 +243,15 @@ const styles = StyleSheet.create({
     alignItems: 'baseline',
   },
   dateNumber: {
-    color: 'white',
-    fontSize: 36,
-    fontWeight: '300',
+    color: '#6E6DFF',
+    fontSize: 40,
+    fontWeight: '700',
+    
   },
   monthText: {
-    color: 'white',
-    fontSize: 24,
-    fontWeight: '300',
+    color: '#6E6DFF',
+    fontSize: 30,
+    fontWeight: '500',
     marginTop: -4,
   },
   timeContainer: {
@@ -253,15 +261,29 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   timeLabel: {
-    color: '#bfdbfe',
-    fontSize: 12,
+    color: '#6E6DFF',
+    fontSize: 13,
     fontWeight: '500',
     letterSpacing: 1,
     marginBottom: 4,
+    marginRight: 5
+  },
+  timeLabel1: {
+    color: '#6E6DFF',
+    fontSize: 13,
+    fontWeight: '500',
+    letterSpacing: 1,
+    marginBottom: 4,
+    marginRight: 5
   },
   timeValue: {
-    color: 'white',
-    fontWeight: '500',
+    color: '#black',
+    fontWeight: '300',
+  },
+  timeValue1: {
+    color: '#black',
+    fontWeight: '300',
+    marginRight: 11
   },
   contentContainer: {
     padding: 24,
@@ -276,8 +298,10 @@ const styles = StyleSheet.create({
       width: 0,
       height: 2,
     },
-    shadowOpacity: 0.1,
-    shadowRadius: 3.84,
+    shadowColor: 'rgba(125, 81, 255, 0.81)',
+    shadowOffset: { width: 2, height: 5 },
+    shadowOpacity: 1,
+    shadowRadius: 19,
     elevation: 5,
   },
   performanceHeader: {
@@ -288,6 +312,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 18,
     lineHeight: 24,
+    alignItems: 'center',
   },
   circularProgressWrapper: {
     alignItems: 'center',
@@ -352,13 +377,10 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 24,
     padding: 20,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.1,
-    shadowRadius: 3.84,
+    shadowColor: 'rgba(125, 81, 255, 0.81)',
+    shadowOffset: { width: 2, height: 5 },
+    shadowOpacity: 1,
+    shadowRadius: 19,
     elevation: 5,
   },
   courseContent: {
@@ -401,12 +423,14 @@ const styles = StyleSheet.create({
   logoImage: {
     width: 80,
     height: 80,
+    marginTop: 5,
     
   },
   logoAndGreeting: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 6,
+  
   },
   
 });
